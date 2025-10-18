@@ -1,78 +1,59 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const boxes = document.querySelectorAll(".service-card");
-
-  window.addEventListener("scroll", checkBoxes);
-
-  checkBoxes();
-
-  function checkBoxes() {
-    const windowheight = (window.innerHeight / 2) * 5;
-    boxes.forEach((box) => {
-      const triggerPoint = box.getBoundingClientRect().top;
-      if (triggerPoint < windowheight) {
-        box.classList.add("show");
-      } else {
-        box.classList.remove("show");
-      }
+    // Use IntersectionObserver for better performance and cleaner code
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            } else {
+                // This allows the animation to replay if the user scrolls up and then back down
+                entry.target.classList.remove('show');
+            }
+        });
+    }, {
+        threshold: 0.1 // Animation triggers when 10% of the element is visible
     });
-  }
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-  const boxes = document.querySelectorAll(".about-exp");
+    // Select all elements that should have a scroll-triggered animation
+    const animatedElements = document.querySelectorAll(
+        '.main-content,.project-card, .main-image, .service-card, .about-exp, .about-image, .pricing-card, .conquest-card, .section-title'
+    );
 
-  window.addEventListener("scroll", checkBoxes);
-
-  checkBoxes();
-
-  function checkBoxes() {
-    const windowheight = (window.innerHeight / 2) * 5;
-    boxes.forEach((box) => {
-      const triggerPoint = box.getBoundingClientRect().top;
-      if (triggerPoint < windowheight) {
-        box.classList.add("show");
-      } else {
-        box.classList.remove("show");
-      }
+    // Observe each animated element
+    animatedElements.forEach(el => {
+        observer.observe(el);
     });
-  }
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-  const boxes = document.querySelectorAll(".about-image");
+    // Video Overlay Logic
+    const videoOverlay = document.getElementById('video-overlay');
+    const overlayVideoPlayer = document.getElementById('overlay-video-player');
+    const closeVideoOverlayBtn = document.querySelector('.close-video-overlay');
+    const projectBtns = document.querySelectorAll('.project-btn');
 
-  window.addEventListener("scroll", checkBoxes);
+    projectBtns.forEach(btn => {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault();
+            const videoSrc = this.dataset.videoSrc; // Get video source from data attribute
 
-  checkBoxes();
-
-  function checkBoxes() {
-    const windowheight = (window.innerHeight / 2) * 5;
-    boxes.forEach((box) => {
-      const triggerPoint = box.getBoundingClientRect().top;
-      if (triggerPoint < windowheight) {
-        box.classList.add("show");
-      } else {
-        box.classList.remove("show");
-      }
+            if (videoSrc) {
+                overlayVideoPlayer.src = videoSrc; // Set src directly on video tag
+                overlayVideoPlayer.load(); // Load the new video source
+                videoOverlay.classList.add('active');
+                overlayVideoPlayer.play();
+            }
+        });
     });
-  }
-});
-document.addEventListener("DOMContentLoaded", function () {
-  const boxes = document.querySelectorAll(".pricing-card");
 
-  window.addEventListener("scroll", checkBoxes);
-
-  checkBoxes();
-
-  function checkBoxes() {
-    const windowheight = (window.innerHeight / 2) * 10;
-    boxes.forEach((box) => {
-      const triggerPoint = box.getBoundingClientRect().top;
-      if (triggerPoint < windowheight) {
-        box.classList.add("show");
-      } else {
-        box.classList.remove("show");
-      }
+    closeVideoOverlayBtn.addEventListener('click', function() {
+        videoOverlay.classList.remove('active');
+        overlayVideoPlayer.pause();
+        overlayVideoPlayer.currentTime = 0; // Reset video to start
     });
-  }
+
+    videoOverlay.addEventListener('click', function(event) {
+        if (event.target === videoOverlay) { // Close if clicked outside video content
+            videoOverlay.classList.remove('active');
+            overlayVideoPlayer.pause();
+            overlayVideoPlayer.currentTime = 0;
+        }
+    });
 });
