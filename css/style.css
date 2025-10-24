@@ -16,6 +16,10 @@ body {
     font-size: 16px; /* Base font size for rem units */
 }
 
+a{
+    text-decoration: none;
+}
+
 /* --- Mobile First Styles (Default) --- */
 
 /* Navigation */
@@ -167,6 +171,7 @@ em {
     box-shadow: #2a367d 2px 2px 15px 2px;
 }
 
+
 .main-image img {
     width: 90%; /* Flexible width */
     height: auto;
@@ -215,7 +220,6 @@ em {
     grid-template-columns: 1fr; /* Single column for mobile */
     grid-gap: 1rem;
     justify-content: center;
-    align-items: center;
 }
 
 .service-card {
@@ -225,6 +229,10 @@ em {
     width: 90%; /* Flexible width */
     height: auto; /* Auto height */
     margin: 0 auto; /* Center card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .service-card p {
@@ -232,6 +240,7 @@ em {
     margin-top: 0.8rem;
     line-height: 1.5;
     color: #f5f4f4;
+    flex-grow: 1;
 }
 
 
@@ -455,7 +464,6 @@ em {
     color: #39FF14;
     font-weight: 900;
     line-height: 1.1;
-    /* margin-top: -0.5rem; */ /* Removed to prevent text overlap */
     text-shadow: 0 0 8px #39FF14;
 }
 
@@ -500,6 +508,13 @@ em {
     border-radius: 0 0 10px 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    transition: all 2s ease-in;
+}
+
+@media (max-width: 480px){
+    .badge{
+        padding: 0.2rem .75rem;
+    }
 }
 
 .pricing-card button:hover {
@@ -1506,4 +1521,25 @@ em {
     #footer-2 p {
         font-size: 1rem;
     }
+}
+
+.service-card-button {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background-color: #5363ee;
+    color: #f5f4f4;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.service-card-button:hover {
+    background-color: #3b4bb8;
+}
+
+.no-underline {
+    text-decoration: none;
 }
