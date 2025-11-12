@@ -68,7 +68,7 @@ nav {
     display: inline-block;
 }
 
-nav a:hover {
+nav a:hover{
     color: #5363ee !important;
     transform: translateY(-5px) !important;
 }
