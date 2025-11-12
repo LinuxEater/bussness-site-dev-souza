@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Hamburger Menu Logic
+    const hamburgerButton = document.getElementById('hamburger-button');
+    const navLinks = document.getElementById('nav-links');
+
+    if (hamburgerButton && navLinks) {
+        hamburgerButton.addEventListener('click', function () {
+            this.classList.toggle('is-active');
+            navLinks.classList.toggle('is-active');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+        });
+    }
+
     // Use IntersectionObserver for better performance and cleaner code
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -43,17 +56,21 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    closeVideoOverlayBtn.addEventListener('click', function() {
-        videoOverlay.classList.remove('active');
-        overlayVideoPlayer.pause();
-        overlayVideoPlayer.currentTime = 0; // Reset video to start
-    });
-
-    videoOverlay.addEventListener('click', function(event) {
-        if (event.target === videoOverlay) { // Close if clicked outside video content
+    if (closeVideoOverlayBtn) {
+        closeVideoOverlayBtn.addEventListener('click', function() {
             videoOverlay.classList.remove('active');
             overlayVideoPlayer.pause();
-            overlayVideoPlayer.currentTime = 0;
-        }
-    });
+            overlayVideoPlayer.currentTime = 0; // Reset video to start
+        });
+    }
+
+    if (videoOverlay) {
+        videoOverlay.addEventListener('click', function(event) {
+            if (event.target === videoOverlay) { // Close if clicked outside video content
+                videoOverlay.classList.remove('active');
+                overlayVideoPlayer.pause();
+                overlayVideoPlayer.currentTime = 0;
+            }
+        });
+    }
 });

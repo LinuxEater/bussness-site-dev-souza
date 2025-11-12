@@ -23,12 +23,123 @@ a{
 /* --- Mobile First Styles (Default) --- */
 
 /* Navigation */
-nav {
-    background-color: rgba(0, 0, 1, 0.2);
+.navbar {
+    position: relative;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+    background-color: rgba(0, 0, 1, 0.2);
+    min-height: 5.5rem;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+    z-index: 1001; /* Ensure it's above the overlay */
+}
+
+.hamburger-box {
+    width: 40px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 40px;
+    height: 4px;
+    background-color: #f5f4f4;
+    border-radius: 4px;
+    position: absolute;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: "";
+    display: block;
+}
+
+.hamburger-inner::before {
+    top: -10px;
+}
+
+.hamburger-inner::after {
+    bottom: -10px;
+}
+
+/* Hamburger Animation */
+.hamburger.is-active .hamburger-inner {
+    background-color: #f5f4f4;
+    transform: rotate(45deg);
+}
+
+.hamburger.is-active .hamburger-inner::before {
+    transform: translate3d(-8px, 0, 0) rotate(-45deg) scaleX(0.7);
+    opacity: 0;
+}
+
+.hamburger.is-active .hamburger-inner::after {
+    transform: rotate(-90deg) translate3d(0, -1px, 0);
+    width: 40px;
+    top: 0;
+}
+
+/* Nav Links Container */
+.nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(8, 2, 63, 0.98);
     flex-direction: column;
     align-items: center;
-    padding: 1rem 0;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.nav-links.is-active {
+    display: flex;
+}
+
+.nav-links .nav-item ul {
+    flex-direction: column;
+    text-align: center;
+}
+
+.nav-links .nav-item li {
+    margin: 1.5rem 0;
+}
+
+.nav-links .nav-item a {
+    font-size: 1.5rem;
+}
+
+.nav-links .button-item {
+    margin-top: 2rem;
 }
 
 .logo img {
@@ -111,6 +222,7 @@ nav a:hover{
     height: auto; /* Auto height for mobile */
     padding: 2rem 1rem;
     text-align: center;
+    margin-top: 3rem;
 }
 
 .main-content {
@@ -1018,10 +1130,42 @@ em {
 /* --- Tablet Styles (min-width: 768px) --- */
 @media (min-width: 768px) {
     /* Navigation */
-    nav {
+    .navbar {
         flex-direction: row;
         justify-content: space-around;
         height: 5.5rem;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        z-index: 1;
+    }
+
+    .nav-links .nav-item ul {
+        flex-direction: row;
+    }
+
+    .nav-links .nav-item li {
+        margin: 0 15px;
+    }
+
+    .nav-links .nav-item a {
+        font-size: 1.1rem;
+    }
+
+    .nav-links .button-item {
+        margin-top: 0;
     }
 
     .logo img {
@@ -1053,6 +1197,7 @@ em {
         height: 90vh;
         padding: 0 2rem;
         text-align: left;
+        margin-top: 1.5rem;
     }
 
     .main-content {

@@ -7,7 +7,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔵</text></svg>">
-    <title>Dev Souza - Criação de Sites e Automação de Processos em BH e SP</title>
+    <title>Dev Souza - Criação de Sites e Automação de Processos</title>
     <meta name="description" content="A Dev Souza é uma agência de criação de sites, desenvolvimento de sistemas, automação de processos (RPA), chatbots e design. Atendemos empresas em Belo Horizonte, São Paulo e todo o Brasil.">
     <script type="application/ld+json">
     {
@@ -68,19 +68,26 @@
 </head>
 <body>
     <header id="home">
-        <nav>
+        <nav class="navbar">
             <div class="logo">
                 <img src="./img/logosouza.png" alt="Logo da Dev Souza">
             </div>
-            <div class="nav-item">
-                <ul>
-                    <li><a href="#home">home</a></li>
-                    <li><a href="#services">serviços</a></li>
-                    <li><a href="#about">sobre nós</a></li>
-                    <li><a href="#contact-card">contato</a></li>
-                </ul>
+            <button class="hamburger" id="hamburger-button" aria-label="menu" aria-expanded="false">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <div class="nav-item">
+                    <ul>
+                        <li><a href="#home">home</a></li>
+                        <li><a href="#services">serviços</a></li>
+                        <li><a href="#about">sobre nós</a></li>
+                        <li><a href="#contact-card">contato</a></li>
+                    </ul>
+                </div>
+                <div class="button-item"><a href="https://wa.me/5538998189765" target="_blank" class="no-underline"><button>Fale Conosco &nbsp;<i id="thumb" class="fa fa-thumbs-o-up" style="font-size:22px;color:rgb(25, 18, 128)"></i></button></a></div>
             </div>
-            <div class="button-item"><a href="https://wa.me/5538998189765" target="_blank" class="no-underline"><button>Fale Conosco &nbsp;<i id="thumb" class="fa fa-thumbs-o-up" style="font-size:22px;color:rgb(25, 18, 128)"></i></button></a></div>
         </nav>
     </header>
 
