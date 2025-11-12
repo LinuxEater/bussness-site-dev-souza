@@ -2,6 +2,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hamburger Menu Logic
     const hamburgerButton = document.getElementById('hamburger-button');
     const navLinks = document.getElementById('nav-links');
+    const navMenuLinks = document.querySelectorAll('.nav-links a');
+
+    function closeMenu() {
+        hamburgerButton.classList.remove('is-active');
+        navLinks.classList.remove('is-active');
+        hamburgerButton.setAttribute('aria-expanded', 'false');
+    }
 
     if (hamburgerButton && navLinks) {
         hamburgerButton.addEventListener('click', function () {
@@ -9,6 +16,14 @@ document.addEventListener("DOMContentLoaded", function () {
             navLinks.classList.toggle('is-active');
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
             this.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        navMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('is-active')) {
+                    closeMenu();
+                }
+            });
         });
     }
 

@@ -89,21 +89,33 @@ a{
     bottom: -10px;
 }
 
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    transition: top 0.1s 0.15s ease-in, bottom 0.1s 0.15s ease-in, transform 0.1s ease-in, background-color 0.1s ease-in;
+}
+
+
 /* Hamburger Animation */
+.hamburger.is-active {
+    position: fixed;
+    right: 1rem;
+    top: 1.75rem; /* (5.5rem navbar height / 2) - (24px hamburger height / 2) approx */
+}
+
 .hamburger.is-active .hamburger-inner {
-    background-color: #f5f4f4;
-    transform: rotate(45deg);
+    background-color: transparent;
+    transition-delay: 0.1s;
 }
 
 .hamburger.is-active .hamburger-inner::before {
-    transform: translate3d(-8px, 0, 0) rotate(-45deg) scaleX(0.7);
-    opacity: 0;
+    top: 0;
+    transform: rotate(45deg);
+    transition: top 0.1s ease-out, transform 0.1s 0.15s ease-out;
 }
 
 .hamburger.is-active .hamburger-inner::after {
-    transform: rotate(-90deg) translate3d(0, -1px, 0);
-    width: 40px;
-    top: 0;
+    bottom: 0;
+    transform: rotate(-45deg);
+    transition: bottom 0.1s ease-out, transform 0.1s 0.15s ease-out;
 }
 
 /* Nav Links Container */
