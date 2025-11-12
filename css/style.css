@@ -1290,7 +1290,7 @@ em {
     /* Footer */
     #footer {
         padding: 2rem 1rem;
-        height: 20vh;
+        height: auto;
     }
 
     .footer-box {
@@ -1508,6 +1508,7 @@ em {
     /* Footer */
     #footer h3 {
         font-size: 1.5rem;
+        height: auto;
     }
 
     #footer p, #footer li {
