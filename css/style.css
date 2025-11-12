@@ -373,6 +373,10 @@ em {
     letter-spacing: 1px;
 }
 
+.pricing-subtitle {
+    margin-bottom: 1.5rem; /* Adjust as needed */
+}
+
 .pricing-box {
     display: grid;
     grid-template-columns: 1fr; /* Single column for mobile */
@@ -632,6 +636,24 @@ em {
     font-weight: 500;
 }
 
+/* Technology-specific tag colors */
+.project-tags .tag-html { background-color: #E34F26; color: #fff; }
+.project-tags .tag-css { background-color: #1572B6; color: #fff; }
+.project-tags .tag-javascript { background-color: #F7DF1E; color: #000; }
+.project-tags .tag-bootstrap { background-color: #7952B3; color: #fff; }
+.project-tags .tag-django { background-color: #092E20; color: #fff; border: 1px solid #44B78B; } /* Django green is dark */
+.project-tags .tag-postgresql { background-color: #336791; color: #fff; }
+.project-tags .tag-docker { background-color: #2496ED; color: #fff; }
+.project-tags .tag-react { background-color: #61DAFB; color: #000; }
+.project-tags .tag-tailwind { background-color: #38B2AC; color: #fff; }
+.project-tags .tag-python { background-color: #3776AB; color: #fff; }
+.project-tags .tag-selenium { background-color: #43B02A; color: #fff; }
+.project-tags .tag-sqlite { background-color: #003B57; color: #fff; }
+
+/* Generic tags for less common libs */
+.project-tags .tag-python-lib { background-color: #4584b6; color: #fff; } /* A lighter python blue */
+.project-tags .tag-generic { background-color: #6c757d; color: #fff; } /* A neutral gray */
+
 .project-btn {
     display: inline-block;
     padding: 0.7rem 1.5rem;
@@ -810,107 +832,90 @@ em {
     box-shadow: #2a367d 5px 5px 15px 5px;
 }
 
-/* Footer */
-#footer {
-    background-color: #bbc3e9;
-    padding: 2rem 1rem;
-    color: #f5f4f4;
-    height: 25vh;
-    padding-bottom: 1.2rem;
-}
-
-.footer-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* --- Footer --- */
+.site-footer {
+    background-color: #08023f;
+    color: #bbc3e9;
+    padding: 3rem 1rem 0;
+    border-top: 4px solid #5363ee;
     text-align: center;
-    padding-bottom: 2rem;
 }
 
-.footer-about, .footer-links, .footer-contact, .footer-time {
-    width: 100%;
-    margin: 1rem 0;
-    margin-bottom: 1rem !important;
+.footer-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
 }
 
-.footer-about h3, .footer-links h3, .footer-contact h3, .footer-time h3 {
+.footer-column {
+    min-width: 0; /* Prevents grid blowout */
+}
+
+.footer-title {
     font-size: 1.2rem;
-    margin-bottom: 0.8rem;
+    color: #f5f4f4;
+    margin-bottom: 1rem;
     font-weight: bold;
-    color: #08023f;
+    text-transform: uppercase;
 }
 
-.footer-about p, .footer-links li, .footer-contact p, .footer-time p {
+.footer-column p,
+.footer-list li {
     font-size: 0.9rem;
-    color: #7566ec;
+    line-height: 1.6;
     margin-bottom: 0.5rem;
-    line-height: 1.5;
-    text-decoration: none;
-    font-weight: bold;
 }
 
-.footer-links ul {
+.footer-list {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.footer-links ul li {
+.footer-list a {
+    color: #bbc3e9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-list a:hover {
+    color: #5363ee;
+}
+
+.social-icons {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-left: 0;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-.footer-contact img {
-    width: 30px;
-    height: 30px;
-    margin: 0 0.5rem;
-    transition: all 0.2s ease-in-out;
+.social-icon {
+    color: #bbc3e9;
+    font-size: 1.8rem;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.footer-contact img:hover {
-    transform: scale(1.5);
-    cursor: pointer;
+.social-icon:hover {
+    color: #5363ee;
+    transform: translateY(-3px);
 }
 
-.facebook, .whatsapp, .instagram, .telegram {
-    transition: all 0.5s ease-in-out;
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 1rem;
 }
 
-.facebook:hover {
-    filter: drop-shadow(0px 0px 20px #240ee6);
-    border-radius: 100%;
-}
-
-.whatsapp:hover {
-    filter: drop-shadow(0px 0px 20px #25D366);
-}
-
-.instagram:hover {
-    filter: drop-shadow(0px 0px 20px #C13584)
-}
-
-.telegram:hover {
-    background-color: #0088cc;
-    border-radius: 100%;
-}
-
-#footer-2 {
-    background-color: #08023f;
-    text-align: center;
-    padding: 1rem;
-    color: #f5f4f4;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#footer-2 p {
+.footer-bottom p {
+    margin: 0;
     font-size: 0.8rem;
+    color: #bbc3e9;
 }
-
 
 /* Video Overlay Styles */
 .video-overlay {
@@ -1287,47 +1292,6 @@ em {
         padding: 0.75rem 1.75rem;
     }
 
-    /* Footer */
-    #footer {
-        padding: 2rem 1rem;
-        height: auto;
-    }
-
-    .footer-box {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    .footer-about, .footer-links, .footer-contact, .footer-time {
-        width: 200px;
-        margin: 1rem;
-    }
-
-    .footer-about h3, .footer-links h3, .footer-contact h3, .footer-time h3 {
-        font-size: 1.3rem;
-    }
-
-    .footer-about p, .footer-links li, .footer-contact p, .footer-time p {
-        font-size: 0.9rem;
-    }
-
-    .footer-links ul li {
-        justify-content: flex-start;
-    }
-
-    .footer-contact img {
-        width: 35px;
-        height: 35px;
-        margin: 0 0.5rem 0 0;
-    }
-
-    #footer-2 {
-        height: 10vh;
-    }
-
-    #footer-2 p {
-        font-size: 0.9rem;
-    }
 }
 
 @keyframes sidebyside {
@@ -1505,24 +1469,6 @@ em {
         font-size: 1.5rem;
     }
 
-    /* Footer */
-    #footer h3 {
-        font-size: 1.5rem;
-        height: auto;
-    }
-
-    #footer p, #footer li {
-        font-size: 1rem;
-    }
-
-    .footer-contact img {
-        width: 40px;
-        height: 40px;
-    }
-
-    #footer-2 p {
-        font-size: 1rem;
-    }
 }
 
 .service-card-button {
@@ -1544,4 +1490,26 @@ em {
 
 .no-underline {
     text-decoration: none;
+}
+
+/* --- Footer Media Queries --- */
+@media (min-width: 768px) {
+    .site-footer {
+        text-align: left;
+    }
+
+    .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .social-icons {
+        justify-content: flex-start;
+    }
+}
+
+@media (min-width: 1024px) {
+    .footer-main {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+    }
 }
