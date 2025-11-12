@@ -69,8 +69,8 @@ nav {
 }
 
 nav a:hover {
-    color: #5363ee;
-    transform: translateY(-5px);
+    color: #5363ee !important;
+    transform: translateY(-5px) !important;
 }
 
 .button-item button {
@@ -815,7 +815,8 @@ em {
     background-color: #bbc3e9;
     padding: 2rem 1rem;
     color: #f5f4f4;
-    height: auto;
+    height: 25vh;
+    padding-bottom: 1.2rem;
 }
 
 .footer-box {
@@ -1112,7 +1113,7 @@ em {
     /* About Section */
     #about {
         flex-direction: row;
-        height: 60vh;
+        height: 85vh;
         padding: 4rem 2rem;
         text-align: left;
     }
